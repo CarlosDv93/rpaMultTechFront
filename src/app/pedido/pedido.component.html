@@ -1,0 +1,68 @@
+<h2>
+  Pedidos RPA
+</h2>
+
+<div class="container top">
+  <div class="row">
+    <div class="col">
+      <form method="POST" (ngSubmit)="enviar()" [formGroup]="formulario">
+        <label>Nome: </label>
+        <input type="text" id="nome" class="form-control" formControlName="nome" placeholder="João" [ngClass]="{'is-invalid': formulario.get('nome').touched && formulario.get('nome').invalid, 
+            'is-valid': formulario.get('nome').touched && formulario.get('nome').valid}" />
+
+        <label>Item: </label>
+        <input type="text" id="item" class="form-control" formControlName="item" placeholder="Cereal" [ngClass]="{'is-invalid': formulario.get('item').touched && formulario.get('item').invalid, 
+                'is-valid': formulario.get('item').touched && formulario.get('item').valid}" />
+
+
+        <label>Quantidade:</label>
+        <input id="qtde" class="form-control" formControlName="qtde" type="number" min="0.01" step="0.01"
+          placeholder="3" [ngClass]="{'is-invalid': formulario.get('qtde').touched && formulario.get('qtde').invalid, 
+                    'is-valid': formulario.get('qtde').touched && formulario.get('qtde').valid}" />
+
+
+        <label>Valor (R$):</label>
+        <input id="valor" class="form-control" formControlName="valor" type="number" min="0.01" step="0.01"
+          placeholder="12,50" [ngClass]="{'is-invalid': formulario.get('valor').touched && formulario.get('valor').invalid, 
+                        'is-valid': formulario.get('valor').touched && formulario.get('valor').valid}" />
+
+
+        <br>
+
+        <button type="submit" class="btn btn-primary" [disabled]="formulario.invalid"
+          [ngClass]="{'is-invalid': formulario.invalid}" name="salvar" id="salvar">Salvar</button>
+      </form>
+    </div>
+  </div>
+
+  <div>
+
+    <!-- Inserido com sucesso -->
+    <div *ngIf="inseridoSucesso" class="alert alert-success alert-dismissible fade show" role="alert">
+      <strong class="d-flex justify-content-center">Produto inserido com sucesso</strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <!--Não inserido -->
+    <div *ngIf="!inseridoSucesso && !primeiroAcesso" class="alert alert-danger alert-dismissible fade show"
+      role="alert">
+
+      <strong class="d-flex justify-content-center">Produto não foi inserido</strong>
+
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+  </div>
+
+  <hr>
+
+</div>
+
+
+<div>
+  <app-lista-pedidos [atualizar]="atualizar"></app-lista-pedidos>
+</div>
