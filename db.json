@@ -1,0 +1,25 @@
+{
+  "pedido": [
+    {
+      "id": 1,
+      "nome": "Carlos",
+      "item": "Chocolate",
+      "valor": 1.5,
+      "qtde": 3
+    },
+    {
+      "id": 2,
+      "nome": "David",
+      "item": "Trident",
+      "valor": 2,
+      "qtde": 1
+    },
+    {
+      "nome": "Teste",
+      "valor": 4,
+      "qtde": 2,
+      "item": "123",
+      "id": 3
+    }
+  ]
+}
